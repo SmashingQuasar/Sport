@@ -22,10 +22,9 @@ if(!empty($_GET)){
             $etape = 1;
         }
 
-        if($action === 'details')
+        if($action === 'listerAdherentsNonAJour')
         {
-            $id = (int) $_GET['id'];
-            $adherent = Adherent::getAdherent($id);
+            $tabAdherents = Adherent::getAdherentsNonAJour();
             $etape = 2;
         }
 

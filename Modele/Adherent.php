@@ -124,7 +124,8 @@ class Adherent{
             $sql = 'SELECT DISTINCT adherents.id_adherent, nom, prenom, date_naissance, genre , nom_club , adherents_est_inscrit.date_inscription
                     FROM adherents, clubs, adherents_est_inscrit
                     WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent
-                    AND clubs.id_club = adherents_est_inscrit.id_club';
+                    AND clubs.id_club = adherents_est_inscrit.id_club
+                    ORDER BY nom';
             
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute();
@@ -134,22 +135,31 @@ class Adherent{
         return $adherents;
     }
 
-    public static function getAdherent(int $id) : ?array
+    /**
+     * Liste les adhérents qui ne sont pas à jour
+     *
+     * @return array
+     */
+    public static function getAdherentsNonAJour() :?array
     {
         $connexion = CNX::getInstance();
+
         if($connexion){
 
-            $sql = 'SELECT * FROM adherents
-                    WHERE id_adherent = :id';
+            $sql = 'SELECT DISTINCT id_adherent, nom, prenom, date_naissance, genre                     
+                    FROM adherents
+                    WHERE adherents.id_adherent NOT IN (
+                        SELECT adherents.id_adherent
+                        FROM adherents, adherents_est_inscrit
+                        WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent)
+                    ORDER BY nom';
             
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-            $sth->execute([':id' => $id]);
+            $sth->execute();
 
-            $adherent = $sth->fetch();
+            $adherents = $sth->fetchAll();
         }
-
-        return $adherent;
-
+        return $adherents;
     }
 
 

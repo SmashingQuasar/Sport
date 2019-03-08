@@ -11,8 +11,6 @@
             <th scope="col">Prenom</th>
             <th scope="col">Date de naissance</th>
             <th scope="col">Genre</th>
-            <th scope="col">Nom Club</th>
-            <th scope="col">Date Inscription</th>
         </tr>
         </thead>
 
@@ -26,8 +24,6 @@
                     <td><?= ucfirst($tabAdherents[$i]['prenom']) ?></td>
                     <td><?= $tabAdherents[$i]['date_naissance'] ?></td>
                     <td><?= $tabAdherents[$i]['genre'] ?></td>
-                    <td><?= $tabAdherents[$i]['nom_club'] ?></td>
-                    <td><?= $tabAdherents[$i]['date_inscription'] ?></td>
                 </tr>
             <?php $i++ ?>
 

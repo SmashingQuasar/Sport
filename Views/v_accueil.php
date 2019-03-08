@@ -15,10 +15,10 @@
                             <a href="AdherentController.php?action=listerAdherentsAJour">Adhérents à jour</a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="AdherentController.php?action=listerAdherentsNonAJour">Adhérents non à jour</a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                            <a href="AdherentController.php?action=listerClubAdherents">Lister les adhérents d'un club</a>
                         </li>
                     </ul>
                 </li>
@@ -59,9 +59,13 @@
            {
                switch($etape)
                {
-                   case 1 :
-                     include($repVues."/adherents/v_listerAdherents.php") ;
-                     break;
+                    case 1 :
+                        include($repVues."/adherents/v_listerAdherents.php") ;
+                         break;
+                    
+                    case 2:
+                        include($repVues."/adherents/v_listerAdherentsNonAJour.php") ;  
+                        break;
 
                }
            }
