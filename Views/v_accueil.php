@@ -5,7 +5,6 @@
             <div class="sidebar-header">
                   <a href="Index.php"><h3>Sport</h3></a>
             </div>
-
             <ul class="list-unstyled components">
                 <p>Dashborad</p>
                 <li class="active">
@@ -19,7 +18,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clubs</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -28,7 +26,6 @@
                         </li>
                     </ul>
                 </li>
-  
             </ul>
 
   

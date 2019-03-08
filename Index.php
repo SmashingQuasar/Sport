@@ -39,12 +39,17 @@ if(!empty($_GET)){
     }
 }
 
-if(!empty($_POST)){
+if(!empty($_POST))
+{
+    //On vient du formulaire demandant se choisir un club pour lister ses adhérents
+    if(!empty($_POST['selectedClub']))
+    {    
+        $clubs = Club::getClubs();
+        $club=  explode("-", $_POST['selectedClub']);
+        $adherentsClub = Club::getAdherents( (int) $club[0]);
+        $etape= 4;
+    }
 
-    $clubs = Club::getClubs();
-    $club=  explode("-", $_POST['selectedClub']);
-    $adherentsClub = Club::getAdherents( (int) $club[0]);
-    $etape= 4;
 }
 
 

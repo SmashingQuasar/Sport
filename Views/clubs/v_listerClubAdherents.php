@@ -1,7 +1,7 @@
 <!--- Elie Bismuth -->
 
 <div class="container mt-5">
-    <h2>Sélectionnez un club</h2>
+    <h2>Sélectionnez un club pour voir ses adhérents</h2>
     <form class="mt-3" action="Index.php" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
@@ -37,9 +37,5 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-
-<?php else :  ?>
-
-    <p>Ce club ne posséde aucun adhérent</p>
 
 <?php endif; ?>
