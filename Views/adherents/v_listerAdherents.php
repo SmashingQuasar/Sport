@@ -17,21 +17,18 @@
         </thead>
 
         <tbody>
-            <?php
-            $i = 0;
-            while($i < count($tabAdherents)) : ?>
+            <?php foreach($tabAdherents as $adherent) : ?>
 
                 <tr>
-                    <td><?= ucfirst($tabAdherents[$i]['nom']) ?></td>
-                    <td><?= ucfirst($tabAdherents[$i]['prenom']) ?></td>
-                    <td><?= $tabAdherents[$i]['date_naissance'] ?></td>
-                    <td><?= $tabAdherents[$i]['genre'] ?></td>
-                    <td><?= $tabAdherents[$i]['nom_club'] ?></td>
-                    <td><?= $tabAdherents[$i]['date_inscription'] ?></td>
+                    <td><?= ucfirst($adherent['nom']) ?></td>
+                    <td><?= ucfirst($adherent['prenom']) ?></td>
+                    <td><?= $adherent['date_naissance'] ?></td>
+                    <td><?= $adherent['genre'] ?></td>
+                    <td><?= $adherent['nom_club'] ?></td>
+                    <td><?= $adherent['date_inscription'] ?></td>
                 </tr>
-            <?php $i++ ?>
-
-            <?php endwhile; ?>
+  
+            <?php endforeach; ?>
         </tbody>
     </table>
     
