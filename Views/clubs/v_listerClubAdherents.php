@@ -2,11 +2,11 @@
 
 <div class="container mt-5">
     <h2>Sélectionnez un club pour voir ses adhérents</h2>
-    <form class="mt-3" action="Index.php" method="post">
+    <form class="mt-3" action="Index.php?action=listerClub" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
 
-                <option> <?=  $club['id_club'] . " - " .$club['nom_club'] ?> </option>
+                <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>
             
             <?php endforeach; ?>
         </select>
@@ -29,10 +29,10 @@
         <tbody>
             <?php foreach($adherentsClub as $adherent) : ?>
                 <tr>
-                    <td><?= ucfirst($adherent['nom']) ?></td>
-                    <td><?= ucfirst($adherent['prenom']) ?></td>
-                    <td><?= $adherent['date_naissance'] ?></td>
-                    <td><?= $adherent['genre'] ?></td>
+                    <td><?= ucfirst($adherent->getNom()) ?></td>
+                    <td><?= ucfirst($adherent->getPrenom()) ?></td>
+                    <td><?= $adherent->getDateNaissance() ?></td>
+                    <td><?= $adherent->getGenre() ?></td>
                 </tr>    
             <?php endforeach; ?>
         </tbody>

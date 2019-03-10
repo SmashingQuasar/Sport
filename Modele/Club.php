@@ -4,6 +4,7 @@ namespace App;
 
 use PDO;
 use App\Cnx;
+use Exception;
 
 class Club{
 
@@ -103,13 +104,21 @@ class Club{
 
         if($connexion){
 
-            $sql = 'SELECT id_club, nom_club                     
+            $sql = 'SELECT *                    
                     FROM clubs';
     
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute();
 
-            $clubs = $sth->fetchAll();
+            $values = $sth->fetchAll();
+
+            foreach($values as $club){
+                $clubs[]= new Club($club['id_club'],$club['nom_club'], $club['code_postal'], $club['ville']);
+            }
+
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
         }
 
         return $clubs;
@@ -137,11 +146,51 @@ class Club{
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute([':club' => $club]);
 
-            $clubs = $sth->fetchAll();
+            $values = $sth->fetchAll();
+
+            foreach($values as $adherent){
+
+                $adherents[] = new Adherent(
+                    $adherent['id_adherent'],
+                    $adherent['prenom'],
+                    $adherent['nom'],
+                    $adherent['date_naissance'],
+                    $adherent['genre']);
+            }
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
         }
 
-        return $clubs;
+        return $adherents;
     }
+
+    public static function AjouterAdherent(string $prenom, string $nom, $dateNaissance, string $genre) : ?bool
+    {
+        $connexion = Cnx::getInstance();
+
+        if($connexion){
+
+            $sql = 'INSERT INTO adherents(prenom,nom,date_naissance,genre)                    
+                    VALUES (:prenom, :nom, :date_naissance, :genre) ';
+
+            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+            $ok= $sth->execute([
+                ':prenom' => $prenom,
+                ':nom' => $nom,
+                ':date_naissance'=> $dateNaissance,
+                ':genre' => $genre
+                ]);
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
+        }
+
+        return $ok ? true : false ;
+
+    }
+
+    
 
 
 

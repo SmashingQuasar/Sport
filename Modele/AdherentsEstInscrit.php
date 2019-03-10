@@ -1,6 +1,9 @@
 <?php
 
+//Elie Bismuth
+
 namespace App;
+use PDO;
 
 class AdherentsEstInscrit{
 
@@ -17,7 +20,7 @@ class AdherentsEstInscrit{
      * @param $dateInscription
      * @param $anneeLicence
      */
-    public function __construct(integer $idAdherent, integer $idClub, date $dateInscription, date $anneeLicence)
+    public function __construct($idAdherent, $idClub, $dateInscription, $anneeLicence)
     {
         $this->idAdherent = $idAdherent;
         $this->idClub = $idClub;
@@ -28,7 +31,7 @@ class AdherentsEstInscrit{
     /**
      * @return mixed
      */
-    public function getIdAdherent() :?integer
+    public function getIdAdherent() :?int
     {
         return $this->idAdherent;
     }
@@ -36,7 +39,7 @@ class AdherentsEstInscrit{
     /**
      * @param mixed $idAdherent
      */
-    public function setIdAdherent(integer $idAdherent)
+    public function setIdAdherent(int $idAdherent)
     {
         $this->idAdherent = $idAdherent;
     }
@@ -44,7 +47,7 @@ class AdherentsEstInscrit{
     /**
      * @return mixed
      */
-    public function getIdClub() : ?integer
+    public function getIdClub() : ?int
     {
         return $this->idClub;
     }
@@ -52,7 +55,7 @@ class AdherentsEstInscrit{
     /**
      * @param mixed $idClub
      */
-    public function setIdClub(integer $idClub)
+    public function setIdClub(int $idClub)
     {
         $this->idClub = $idClub;
     }
@@ -60,7 +63,7 @@ class AdherentsEstInscrit{
     /**
      * @return mixed
      */
-    public function getDateInscription() : ?date
+    public function getDateInscription()
     {
         return $this->dateInscription;
     }
@@ -68,7 +71,7 @@ class AdherentsEstInscrit{
     /**
      * @param mixed $dateInscription
      */
-    public function setDateInscription(date $dateInscription)
+    public function setDateInscription($dateInscription)
     {
         $this->dateInscription = $dateInscription;
     }
@@ -76,7 +79,7 @@ class AdherentsEstInscrit{
     /**
      * @return mixed
      */
-    public function getAnneeLicence() : ?date
+    public function getAnneeLicence()
     {
         return $this->anneeLicence;
     }
@@ -84,12 +87,37 @@ class AdherentsEstInscrit{
     /**
      * @param mixed $anneeLicence
      */
-    public function setAnneeLicence(date $anneeLicence)
+    public function setAnneeLicence($anneeLicence)
     {
         $this->anneeLicence = $anneeLicence;
     }
 
+
+
+public static function AjouterInscription($idAdherent, $idClub, $date, $licence ) : ?bool
+{
+    $connexion = Cnx::getInstance();
+
+    if($connexion){
+
+        $sql = 'INSERT INTO adherents_est_inscrit(id_adherent,id_club,date_inscription, annee_de_licence)                    
+                VALUES (:idAdherent, :idClub, :dateInscription, :licence) ';
+
+        $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        $ok= $sth->execute([
+            ':idAdherent' => $idAdherent,
+            ':idClub' => $idClub,
+            ':dateInscription'=> $date,
+            ':licence' => $licence
+            ]);
+    }
+    else{
+        throw new Exception("Erreur de connexion a la base de données");
+    }
+
+    return $ok ? true : false ;
+
+}
+
     
-
-
 }

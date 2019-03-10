@@ -4,6 +4,7 @@ namespace App;
 
 use PDO;
 use App\Cnx;
+use Exception;
 
 class Adherent{
 
@@ -21,7 +22,7 @@ class Adherent{
      * @param $dateNaissance
      * @param $genre
      */
-    public function __construct(int $id, string $prenom, string $nom, date $dateNaissance, string $genre)
+    public function __construct(int $id, string $prenom, string $nom, $dateNaissance, string $genre)
     {
         $this->id = $id;
         $this->prenom = $prenom;
@@ -81,7 +82,7 @@ class Adherent{
     /**
      * @return mixed
      */
-    public function getDateNaissance() : date
+    public function getDateNaissance()
     {
         return $this->dateNaissance;
     }
@@ -89,7 +90,7 @@ class Adherent{
     /**
      * @param mixed $dateNaissance
      */
-    public function setDateNaissance(date $dateNaissance)
+    public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
     }
@@ -132,6 +133,10 @@ class Adherent{
 
             $adherents = $sth->fetchAll();
         }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
+        }
+
         return $adherents;
     }
 
@@ -157,7 +162,20 @@ class Adherent{
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute();
 
-            $adherents = $sth->fetchAll();
+            $values = $sth->fetchAll();
+
+            foreach($values as $adherent){
+
+                $adherents[] = new Adherent(
+                    $adherent['id_adherent'],
+                    $adherent['prenom'],
+                    $adherent['nom'],
+                    $adherent['date_naissance'],
+                    $adherent['genre']);
+            }
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
         }
         return $adherents;
     }

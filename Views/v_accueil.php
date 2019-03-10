@@ -1,3 +1,5 @@
+<!----- Elie Bismuth !-->
+
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
@@ -23,6 +25,9 @@
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="Index.php?action=listerClubAdherents">Voir les adhérents</a>
+                        </li>
+                        <li>
+                            <a href="Index.php?action=ajouterAdherent">Ajouter un adhérent</a>
                         </li>
                     </ul>
                 </li>
@@ -52,7 +57,9 @@
                         case 4:
                             include($repVues."/clubs/v_listerClubAdherents.php") ;  
                             break;
-
+                        case 5:
+                            include($repVues."/clubs/v_ajouterAdherent.php") ;  
+                            break;
                 }
             }
            ?>
