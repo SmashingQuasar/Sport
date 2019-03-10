@@ -159,7 +159,7 @@ class Adherent{
                         WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent)
                     ORDER BY nom';
             
-            $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
             $sth->execute();
 
             $values = $sth->fetchAll();
@@ -178,6 +178,46 @@ class Adherent{
             throw new Exception("Erreur de connexion a la base de données");
         }
         return $adherents;
+    }
+
+    public static function getNbHommes(){
+        
+        $connexion = Cnx::getInstance();
+        if($connexion){
+
+            $sql = 'SELECT count(*)                  
+                    FROM adherents
+                    WHERE genre = "M" ';
+            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+            $sth->execute();
+
+            $values = $sth->fetch();
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
+        }
+
+        return $values;
+    }
+
+    public static function getNbFemmes(){
+        
+        $connexion = Cnx::getInstance();
+        if($connexion){
+
+            $sql = 'SELECT count(*)                  
+                    FROM adherents
+                    WHERE genre = "F" ';
+            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+            $sth->execute();
+
+            $values = $sth->fetch();
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
+        }
+
+        return $values;
     }
 
 

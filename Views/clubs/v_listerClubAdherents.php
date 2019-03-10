@@ -5,9 +5,7 @@
     <form class="mt-3" action="Index.php?action=listerClub" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
-
-                <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>
-            
+                <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>       
             <?php endforeach; ?>
         </select>
         <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -15,7 +13,6 @@
 </div>
 
 <?php if(!empty($adherentsClub)) : ?>
-
 
     <table class="table mt-5" id="myTable" >
         <thead class="thead-dark">

@@ -10,7 +10,8 @@
       <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">  
       <link href="assets/css/style.css" rel="stylesheet">  
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-      
+      <script type="text/javascript" src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+
   </head>
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">

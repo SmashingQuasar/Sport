@@ -14,10 +14,10 @@
         <div class="form-group mt-3">
             <label for="nom">Club</label>
             <select name="club" class="browser-default custom-select">
-            <?php foreach($clubs as $club) : ?>
-                <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>
-            <?php endforeach; ?>
-        </select>
+                <?php foreach($clubs as $club) : ?>
+                    <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="nom">Nom</label>

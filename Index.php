@@ -19,31 +19,36 @@ if(!empty($_GET)){
 
     if(!empty($action))
     {
-
-        //Les variables $etapes sont utilisées dans la vue v_accueil afin de déterminer la vue a appeler
-        if($action === 'listerAdherentsAJour')
+        //Les variables $etape sont utilisées dans la vue v_accueil afin de déterminer la vue a appeler
+        switch($action)
         {
-            $tabAdherents = Adherent::getAllAdherents_AJour();
-            $etape = 1;
-        }
+            case 'listerAdherentsAJour' :
+                $tabAdherents = Adherent::getAllAdherents_AJour();
+                $etape = 1;
+                break; 
 
-        if($action === 'listerAdherentsNonAJour')
-        {
-            $tabAdherents = Adherent::getAdherentsNonAJour();
-            $etape = 2;
-        }
+            case  'listerAdherentsNonAJour' :
+                $tabAdherents = Adherent::getAdherentsNonAJour();
+                $etape = 2;
+                break;
 
-        if($action === 'listerClubAdherents')
-        {
-            $clubs = Club::getClubs();
-            $etape = 3;
-        }
-        if($action === 'ajouterAdherent')
-        {
-            $clubs = Club::getClubs();
-            $etape = 5;
-        }
+            case 'listerClubAdherents' :
+                $clubs = Club::getClubs();
+                $etape = 3;
+                break;
 
+            case 'ajouterAdherent' :
+                $clubs = Club::getClubs();
+                $etape = 5;
+                break;
+
+            case 'statGlobal':
+                $etape = 6 ; 
+                $nbHommes = Adherent::getNbHommes();
+                $nbFemmes = Adherent::getNbFemmes();
+                $nbTotal = $nbHommes[0] + $nbFemmes[0];
+                break;
+        }
 
     }
 }
