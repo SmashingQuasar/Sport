@@ -110,11 +110,7 @@ class Club{
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute();
 
-            $values = $sth->fetchAll();
-
-            foreach($values as $club){
-                $clubs[]= new Club($club['id_club'],$club['nom_club'], $club['code_postal'], $club['ville']);
-            }
+            $clubs = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         }
         else{
@@ -146,17 +142,8 @@ class Club{
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute([':club' => $club]);
 
-            $values = $sth->fetchAll();
+            $adherents = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach($values as $adherent){
-
-                $adherents[] = new Adherent(
-                    $adherent['id_adherent'],
-                    $adherent['prenom'],
-                    $adherent['nom'],
-                    $adherent['date_naissance'],
-                    $adherent['genre']);
-            }
         }
         else{
             throw new Exception("Erreur de connexion a la base de données");

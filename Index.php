@@ -48,6 +48,45 @@ if(!empty($_GET)){
                 $nbFemmes = Adherent::getNbFemmes();
                 $nbTotal = $nbHommes[0] + $nbFemmes[0];
                 break;
+
+            case 'statClubs':
+               
+                $etape = 7 ; 
+
+                //On récupere touts les clubs
+                $clubs = Club::getClubs();
+                foreach($clubs as $club)
+                {   
+                    //On initialise les variables a 0 ici, pour que a chaque tour de boucle(chaque club), les competeur sont remis a zero 
+                    $nbHommes = 0;
+                    $nbFemmes = 0;
+
+                    //On récupére les adhérents d'un club
+                    $adherents= Club::getAdherents($club['id_club']);
+                    foreach($adherents as $adherent)
+                    {
+                        if($adherent['genre'] === 'M')
+                        {
+                            $nbHommes = $nbHommes + 1;
+                        }
+                        else
+                        {
+                            $nbFemmes = $nbFemmes + 1;
+                        }
+                       
+                    }
+                    //On construit le tableau avec les datas
+                    $data[]=[
+                        'id' =>$club['id_club'],
+                        'nom' => $club['nom_club'],
+                        'genre'=> [
+                            'hommes' => $nbHommes,
+                            'femmes' => $nbFemmes
+                        ]
+                    ];
+                }
+
+                break;
         }
 
     }

@@ -1,24 +1,36 @@
-<!-- Elie Bismuth -->
 
 
-<div class="alert alert-info" role="alert" align="center">
-    <span id='nbTotal'><?= $nbTotal ?></span> adhérents <br>
-    <span id='nbHommes'><?= $nbHommes[0] ?></span>  hommes <br>
-    <span id='nbFemmes'><?= $nbFemmes[0] ?> </span> femmes 
-</div>
-<div align="center" id="chart-container"></div>
+<!-- On crée la div qui va contenir les camemberts-->
+<div id="chart-container"></div>
 
 
+<!-- On encode en json le tableau contentant toutes les informations   -->
+<script id="data"><?=  json_encode($data) ?></script>
 
 <script>
-    let nbTotal = document.querySelector('#nbTotal').innerHTML;
-    let nbHommes = document.querySelector('#nbHommes').innerHTML;
-    let nbFemmes = document.querySelector('#nbFemmes').innerHTML;
 
-    let pourcentHomme = nbHommes * 100 / nbTotal ; 
-    let pourcentFemme = nbFemmes * 100 / nbTotal ;
+var data = document.querySelector('#data').innerHTML;
+var values = JSON.parse(data);
 
-    const dataSource = {
+console.log(values);
+
+var chartData = [];
+
+for (var i = 0; i < values.length; i++) {
+    chartData.push(
+        {
+            "label": "Hommes",
+            "value": parseFloat(ist[i].MyProperty_Test_Chargers)                
+        },
+        {
+            "label": "Femmes",
+            "value": parseFloat(ist[i].MyProperty_Test_Chargers)   
+        }
+    
+    )
+}
+
+const dataSource = {
     "chart": {
         "caption": "Statisques globales",
         "plottooltext": "<b>$percentValue</b> des adhérents sont des $label",
@@ -50,5 +62,11 @@
             dataSource
         }).render();
     });
+
+
+
+
+
+
 
 </script>

@@ -131,7 +131,7 @@ class Adherent{
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute();
 
-            $adherents = $sth->fetchAll();
+            $adherents = $sth->fetchAll(PDO::FETCH_ASSOC);
         }
         else{
             throw new Exception("Erreur de connexion a la base de données");
@@ -162,17 +162,7 @@ class Adherent{
             $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
             $sth->execute();
 
-            $values = $sth->fetchAll();
-
-            foreach($values as $adherent){
-
-                $adherents[] = new Adherent(
-                    $adherent['id_adherent'],
-                    $adherent['prenom'],
-                    $adherent['nom'],
-                    $adherent['date_naissance'],
-                    $adherent['genre']);
-            }
+            $adherents = $sth->fetchAll(PDO::FETCH_ASSOC);
         }
         else{
             throw new Exception("Erreur de connexion a la base de données");
@@ -188,6 +178,7 @@ class Adherent{
             $sql = 'SELECT count(*)                  
                     FROM adherents
                     WHERE genre = "M" ';
+
             $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
             $sth->execute();
 
@@ -205,7 +196,7 @@ class Adherent{
         $connexion = Cnx::getInstance();
         if($connexion){
 
-            $sql = 'SELECT count(*)                  
+            $sql = 'SELECT count(*)                 
                     FROM adherents
                     WHERE genre = "F" ';
             $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);

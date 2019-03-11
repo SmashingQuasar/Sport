@@ -38,7 +38,7 @@
                             <a href="Index.php?action=statGlobal">Statistiques globales</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=ajouterAdherent">Ajouter un adhérent</a>
+                            <a href="Index.php?action=statClubs">Statistique par clubs</a>
                         </li>
                     </ul>
                 </li>
@@ -60,7 +60,7 @@
             {
                 switch($etape)
                 {
-                    
+                        //Le contenu de $etape est défini dans le fichier Index.php
                         case 1 :
                             include($repVues."/adherents/v_listerAdherents.php") ;
                             break;
@@ -80,12 +80,18 @@
                         case 6 : 
                             include($repVues."/statistiques/v_allStatistique.php") ;  
                             break;
+                        case 7 : 
+                            include($repVues."/statistiques/v_statClubs.php") ;  
+                            break;
 
                 }
             }
            ?>
-        </div>
+             <div class="container mt-5">
+                <div class="copyright text-center">
+                    <span>Copyright © Elie Bismuth</span>
+                <div class="addthis_inline_share_toolbox"></div>
+             </div>
+         </div>
     </div>
-
-
-</body>
+   

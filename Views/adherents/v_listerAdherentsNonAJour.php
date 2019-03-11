@@ -18,10 +18,10 @@
             <?php foreach($tabAdherents as $adherent ): ?>
 
                 <tr>
-                    <td><?= ucfirst($adherent->getNom()) ?></td>
-                    <td><?= ucfirst($adherent->getPrenom()) ?></td>
-                    <td><?= $adherent->getDateNaissance() ?></td>
-                    <td><?= $adherent->getGenre() ?></td>
+                    <td><?= ucfirst($adherent['nom'])  ?></td>
+                    <td><?= ucfirst($adherent['prenom']) ?></td>
+                    <td><?= $adherent['date_naissance'] ?></td>
+                    <td><?= $adherent['genre'] ?></td>
                 </tr>
                 
             <?php endforeach; ?>

@@ -5,7 +5,7 @@
     <form class="mt-3" action="Index.php?action=listerClub" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
-                <option> <?=  $club->getId() . " - " .$club->getNom() ?> </option>       
+                <option> <?=  $club['id_club'] . " - " .$club['nom'] ?> </option>       
             <?php endforeach; ?>
         </select>
         <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -26,10 +26,10 @@
         <tbody>
             <?php foreach($adherentsClub as $adherent) : ?>
                 <tr>
-                    <td><?= ucfirst($adherent->getNom()) ?></td>
-                    <td><?= ucfirst($adherent->getPrenom()) ?></td>
-                    <td><?= $adherent->getDateNaissance() ?></td>
-                    <td><?= $adherent->getGenre() ?></td>
+                    <td><?= ucfirst($adherent['nom']) ?></td>
+                    <td><?= ucfirst($adherent['prenom']) ?></td>
+                    <td><?= $adherent['date_naissance'] ?></td>
+                    <td><?= $adherent['genre'] ?></td>
                 </tr>    
             <?php endforeach; ?>
         </tbody>
