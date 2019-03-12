@@ -50,42 +50,8 @@ if(!empty($_GET)){
                 break;
 
             case 'statClubs':
-               
                 $etape = 7 ; 
-
-                //On récupere touts les clubs
                 $clubs = Club::getClubs();
-                foreach($clubs as $club)
-                {   
-                    //On initialise les variables a 0 ici, pour que a chaque tour de boucle(chaque club), les competeur sont remis a zero 
-                    $nbHommes = 0;
-                    $nbFemmes = 0;
-
-                    //On récupére les adhérents d'un club
-                    $adherents= Club::getAdherents($club['id_club']);
-                    foreach($adherents as $adherent)
-                    {
-                        if($adherent['genre'] === 'M')
-                        {
-                            $nbHommes = $nbHommes + 1;
-                        }
-                        else
-                        {
-                            $nbFemmes = $nbFemmes + 1;
-                        }
-                       
-                    }
-                    //On construit le tableau avec les datas
-                    $data[]=[
-                        'id' =>$club['id_club'],
-                        'nom' => $club['nom_club'],
-                        'genre'=> [
-                            'hommes' => $nbHommes,
-                            'femmes' => $nbFemmes
-                        ]
-                    ];
-                }
-
                 break;
         }
 
@@ -125,9 +91,41 @@ if(!empty($_POST))
         }
     }
 
+    //On vient du formulaire demandant de choisir un club pour voir ses stats
+    if($_GET['action'] === 'statClub'){    
+
+        $clubs = Club::getClubs();
+        //explode afin de récupérer l'id du club 
+        $club=  explode("-", $_POST['selectedClub']);
+        $adherents = Club::getAdherents( (int) $club[0]);
+
+        $nbHommes = 0;
+        $nbFemmes= 0 ;
+        //On récupére le nombre H-F d'un club
+        foreach($adherents as $adherent)
+        {
+            if($adherent['genre'] === 'M')
+            {
+                $nbHommes = $nbHommes + 1;
+            }
+            else
+            {
+                $nbFemmes = $nbFemmes + 1;
+            }
+        
+        }
+            //On construit le tableau avec les datas
+        $data[]=[
+            'nom_club' => $club[1],
+            'hommes' => $nbHommes,
+            'femmes' => $nbFemmes
+        ];
+  
+        $etape= 8;
+    }
+
 }
 
-
-include($repVues."v_entete.php") ;
-include($repVues."v_accueil.php") ;
-include($repVues."v_pied.php");
+include($repVues."globals/v_entete.php") ;
+include($repVues."globals/v_accueil.php") ;
+include($repVues."globals/v_pied.php");

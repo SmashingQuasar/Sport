@@ -83,6 +83,9 @@
                         case 7 : 
                             include($repVues."/statistiques/v_statClubs.php") ;  
                             break;
+                        case 8 : 
+                            include($repVues."/statistiques/v_statClubs.php") ;  
+                            break;
 
                 }
             }

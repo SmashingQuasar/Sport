@@ -1,12 +1,14 @@
 <!-- Elie Bismuth -->
 
 
-<div class="alert alert-info" role="alert" align="center">
-    <span id='nbTotal'><?= $nbTotal ?></span> adhérents <br>
-    <span id='nbHommes'><?= $nbHommes[0] ?></span>  hommes <br>
-    <span id='nbFemmes'><?= $nbFemmes[0] ?> </span> femmes 
+<div class="container">
+    <div class="alert alert-info" role="alert" align="center">
+        <span id='nbTotal'><?= $nbTotal ?></span> adhérents <br>
+        <span id='nbHommes'><?= $nbHommes[0] ?></span>  hommes <br>
+        <span id='nbFemmes'><?= $nbFemmes[0] ?> </span> femmes 
+    </div>
+    <div align="center" id="chart-container"></div>
 </div>
-<div align="center" id="chart-container"></div>
 
 
 
