@@ -61,11 +61,11 @@ if(!empty($_GET)){
 if(!empty($_POST))
 {
     //On vient du formulaire demandant de choisir un club pour lister ses adhérents
-    if($_GET['action'] === 'listerClub'){    
+    if($_GET['action'] === 'listerClub'){
+            
         $clubs = Club::getClubs();
-        //explode afin de récupérer l'id du club 
-        $club=  explode("-", $_POST['selectedClub']);
-        $adherentsClub = Club::getAdherents( (int) $club[0]);
+        $idClub = $_POST['selectedClub'];
+        $adherentsClub = Club::getAdherents( (int) $idClub);
         $etape= 4;
     }
 
@@ -85,7 +85,7 @@ if(!empty($_POST))
         $sucess = false;
         //Si l'adhérent a bien été ajouté, on crée son inscription
         if($ok){
-            $idAdherent= Tools::getLastInsertId();
+            $idAdherent= Cnx::getLastInsertId();
             $ok = AdherentsEstInscrit::AjouterInscription($idAdherent, $idClub[0], date('Y-m-d'), $licence);
             $sucess = true ;
         }

@@ -40,6 +40,9 @@
                         <li>
                             <a href="Index.php?action=statClubs">Statistique par clubs</a>
                         </li>
+                        <li>
+                            <a href="Index.php?action=statAges">Statistique par ages</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

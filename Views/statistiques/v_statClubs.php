@@ -5,7 +5,7 @@
     <form class="mt-3" action="Index.php?action=statClub" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
-                <option> <?=  $club['id_club'] . " - " .$club['nom_club'] ?> </option>       
+                <option value="<?=  $club['id_club'] ?>"> <?= $club['nom_club'] ?> </option>       
             <?php endforeach; ?>
         </select>
         <button type="submit" class="btn btn-primary">Envoyer</button>
