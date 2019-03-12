@@ -53,6 +53,10 @@ if(!empty($_GET)){
                 $etape = 7 ; 
                 $clubs = Club::getClubs();
                 break;
+            
+            case 'statAges':
+                $etape = 9 ; 
+                break;
         }
 
     }
@@ -95,8 +99,10 @@ if(!empty($_POST))
     if($_GET['action'] === 'statClub'){    
 
         $clubs = Club::getClubs();
+        
         //explode afin de récupérer l'id du club 
         $club=  explode("-", $_POST['selectedClub']);
+        
         $adherents = Club::getAdherents( (int) $club[0]);
 
         $nbHommes = 0;
