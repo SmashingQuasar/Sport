@@ -8,7 +8,7 @@
 
 const dataSource = {
   "chart": {
-    "caption": "Countries with Highest Deforestation Rate",
+    "caption": "Statistiques des adhérents par tranches d'ages",
     "subcaption": "For the year 2017",
     "yaxisname": "Deforested Area{br}(in Hectares)",
     "decimals": "1",
@@ -16,45 +16,13 @@ const dataSource = {
   },
   "data": [
     {
-      "label": "Brazil",
-      "value": "1466000"
+      "label": "Homme",
+      "value": "70"
     },
     {
-      "label": "Indonesia",
-      "value": "1147800"
+      "label": "Femme",
+      "value": "30"
     },
-    {
-      "label": "Russian Federation",
-      "value": "532200"
-    },
-    {
-      "label": "Mexico",
-      "value": "395000"
-    },
-    {
-      "label": "Papua New Guinea",
-      "value": "250200"
-    },
-    {
-      "label": "Peru",
-      "value": "224600"
-    },
-    {
-      "label": "U.S.A",
-      "value": "215200"
-    },
-    {
-      "label": "Bolivia",
-      "value": "135200"
-    },
-    {
-      "label": "Sudan",
-      "value": "117807"
-    },
-    {
-      "label": "Nigeria",
-      "value": "82000"
-    }
   ]
 };
 

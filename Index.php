@@ -57,10 +57,9 @@ if(!empty($_GET)){
                 $etape = 9 ;
                 $adherents = Adherent::getAllAdherents();
                 foreach($adherents as $adherent){
-                    var_dump(Adherent::getAge($adherent['date_naissance']));
+                    $ages[] = Adherent::getAge($adherent['date_naissance']);
                 }
-                var_dump($adherents);exit;
-                break;
+
         }
 
     }

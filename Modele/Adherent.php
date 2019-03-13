@@ -226,7 +226,26 @@ class Adherent{
         $today = new \Datetime(date('m.d.y'));
         $bday = new \DateTime($dateNaissance);
 
-        return  $today->diff($bday);
+        $value = $today->diff($bday);
+        $age = ceil($value->days/365);
+        
+        return $age;
+    }
+
+    public static function getTranchesAges($ages)
+    {
+        foreach($ages as $age){
+            $tranche[] = [
+                '10' => $age <10 ? $age : null,
+                '20' => $age <20 ? $age : null,
+                '30' => $age <30 ? $age : null,
+                '40' => $age <40 ? $age : null,
+                '50' => $age <50 ? $age : null,
+                '60' => $age <60 ? $age : null,
+                '70' => $age <70 ? $age : null,
+                '80' => $age <80 ? $age : null,
+            ];
+        }
     }
 
 
