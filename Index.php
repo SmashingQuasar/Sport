@@ -44,9 +44,9 @@ if(!empty($_GET)){
 
             case 'statGlobal':
                 $etape = 6 ; 
-                $nbHommes = Adherent::getNbHommes();
-                $nbFemmes = Adherent::getNbFemmes();
-                $nbTotal = $nbHommes[0] + $nbFemmes[0];
+                $adherents = Adherent::getAllAdherents();
+                $adherents = Adherent::getNbGenre($adherents);
+                $nbTotal= $adherents['hommes'] + $adherents['femmes'];
                 break;
 
             case 'statClubs':
@@ -55,7 +55,9 @@ if(!empty($_GET)){
                 break;
             
             case 'statAges':
-                $etape = 9 ; 
+                $etape = 9 ;
+                $adherents = Adherent::getAllAdherents();
+                var_dump($adherents);exit;
                 break;
         }
 
@@ -66,7 +68,9 @@ if(!empty($_POST))
 {
     //On vient du formulaire demandant de choisir un club pour lister ses adhérents
     if($_GET['action'] === 'listerClub'){
-            
+           
+        //On récupere de nouveau les clubs , car lorsque le formulaire est submit, la même vue est appelé, et il faut
+        //réinjecter les data des clubs dans la liste déroulante
         $clubs = Club::getClubs();
         $idClub = $_POST['selectedClub'];
         $adherentsClub = Club::getAdherents( (int) $idClub);
@@ -85,11 +89,13 @@ if(!empty($_POST))
         
         //On ajoute l'adhérent dans la bdd
         $ok = Club::AjouterAdherent($prenom, $nom, $date, $genre);
+        var_dump($ok);
         
         $sucess = false;
         //Si l'adhérent a bien été ajouté, on crée son inscription
         if($ok){
             $idAdherent= Cnx::getLastInsertId();
+            var_dump($idAdherent);
             $ok = AdherentsEstInscrit::AjouterInscription($idAdherent, $idClub[0], date('Y-m-d'), $licence);
             $sucess = true ;
         }
@@ -99,32 +105,18 @@ if(!empty($_POST))
     if($_GET['action'] === 'statClub'){    
 
         $clubs = Club::getClubs();
-        
+
         //explode afin de récupérer l'id du club 
         $club=  explode("-", $_POST['selectedClub']);
         
         $adherents = Club::getAdherents( (int) $club[0]);
+        $adherents = Adherent::getNbGenre($adherents);
 
-        $nbHommes = 0;
-        $nbFemmes= 0 ;
-        //On récupére le nombre H-F d'un club
-        foreach($adherents as $adherent)
-        {
-            if($adherent['genre'] === 'M')
-            {
-                $nbHommes = $nbHommes + 1;
-            }
-            else
-            {
-                $nbFemmes = $nbFemmes + 1;
-            }
-        
-        }
-            //On construit le tableau avec les datas
+        //On construit le tableau avec les datas
         $data[]=[
             'nom_club' => $club[1],
-            'hommes' => $nbHommes,
-            'femmes' => $nbFemmes
+            'hommes' => $adherents['hommes'],
+            'femmes' => $adherents['femmes']
         ];
   
         $etape= 8;

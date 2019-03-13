@@ -1,6 +1,6 @@
 
 <div class="container">
-
+  <h2>Statistiques des adhérents par tranches d'âges</h2>
   <div id="chart-container"></div>
 </div>
 
@@ -63,7 +63,7 @@ FusionCharts.ready(function() {
       type: "column3d",
       renderAt: "chart-container",
       width: "70%",
-      height: "0%",
+      height: "70%",
       dataFormat: "json",
       dataSource
    }).render();

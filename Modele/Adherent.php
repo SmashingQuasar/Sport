@@ -112,6 +112,31 @@ class Adherent{
     }
 
     /**
+     * Récupére tous les adhérents
+     *
+     * @return array
+     */
+    public static function getAllAdherents() : ?array
+    {
+        $connexion = CNX::getInstance();
+
+        if($connexion){
+
+            $sql = 'SELECT * FROM adherents';
+            
+            $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute();
+
+            $adherents = $sth->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else{
+            throw new Exception("Erreur de connexion a la base de données");
+        }
+
+        return $adherents;
+    }
+
+    /**
      * Liste les adherents a jour
      *
      * @return array
@@ -170,45 +195,29 @@ class Adherent{
         return $adherents;
     }
 
-    public static function getNbHommes(){
+    public static function getNbGenre(array $adherents) : ?array
+    {
+        $nbHommes = 0;
+        $nbFemmes= 0 ;
+        foreach($adherents as $adherent)
+        {
+            if($adherent['genre'] === 'M')
+            {
+                $nbHommes = $nbHommes + 1;
+            }
+            else
+            {
+                $nbFemmes = $nbFemmes + 1;
+            }
         
-        $connexion = Cnx::getInstance();
-        if($connexion){
-
-            $sql = 'SELECT count(*)                  
-                    FROM adherents
-                    WHERE genre = "M" ';
-
-            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-            $sth->execute();
-
-            $values = $sth->fetch();
         }
-        else{
-            throw new Exception("Erreur de connexion a la base de données");
-        }
+        //On construit le tableau avec les datas
+        $data=[
+            'hommes' => $nbHommes,
+            'femmes' => $nbFemmes
+        ];
 
-        return $values;
-    }
-
-    public static function getNbFemmes(){
-        
-        $connexion = Cnx::getInstance();
-        if($connexion){
-
-            $sql = 'SELECT count(*)                 
-                    FROM adherents
-                    WHERE genre = "F" ';
-            $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-            $sth->execute();
-
-            $values = $sth->fetch();
-        }
-        else{
-            throw new Exception("Erreur de connexion a la base de données");
-        }
-
-        return $values;
+        return $data;
     }
 
 

@@ -30,6 +30,7 @@ class Cnx {
       public static function getLastInsertId(){
 
         $id = self::$instance->lastInsertId();
+        return $id;
     }
  
 
