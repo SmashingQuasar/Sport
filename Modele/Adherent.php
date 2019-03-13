@@ -111,6 +111,7 @@ class Adherent{
         $this->genre = $genre;
     }
 
+
     /**
      * Récupére tous les adhérents
      *
@@ -195,7 +196,7 @@ class Adherent{
         return $adherents;
     }
 
-    public static function getNbGenre(array $adherents) : ?array
+    public static function getGenres(array $adherents) : ?array
     {
         $nbHommes = 0;
         $nbFemmes= 0 ;
@@ -220,6 +221,13 @@ class Adherent{
         return $data;
     }
 
+    public static function getAge($dateNaissance)
+    {
+        $today = new \Datetime(date('m.d.y'));
+        $bday = new \DateTime($dateNaissance);
+
+        return  $today->diff($bday);
+    }
 
 
 

@@ -9,8 +9,7 @@ $repVues = __DIR__ . DIRECTORY_SEPARATOR .'Views/';
 use App\Club;
 use App\Adherent;
 use App\AdherentsEstInscrit;
-use App\Tools;
-
+use App\Cnx;
 
 $etape= 0;
 if(!empty($_GET)){
@@ -45,7 +44,7 @@ if(!empty($_GET)){
             case 'statGlobal':
                 $etape = 6 ; 
                 $adherents = Adherent::getAllAdherents();
-                $adherents = Adherent::getNbGenre($adherents);
+                $adherents = Adherent::getGenres($adherents);
                 $nbTotal= $adherents['hommes'] + $adherents['femmes'];
                 break;
 
@@ -57,6 +56,9 @@ if(!empty($_GET)){
             case 'statAges':
                 $etape = 9 ;
                 $adherents = Adherent::getAllAdherents();
+                foreach($adherents as $adherent){
+                    var_dump(Adherent::getAge($adherent['date_naissance']));
+                }
                 var_dump($adherents);exit;
                 break;
         }
@@ -89,13 +91,11 @@ if(!empty($_POST))
         
         //On ajoute l'adhérent dans la bdd
         $ok = Club::AjouterAdherent($prenom, $nom, $date, $genre);
-        var_dump($ok);
         
         $sucess = false;
         //Si l'adhérent a bien été ajouté, on crée son inscription
         if($ok){
             $idAdherent= Cnx::getLastInsertId();
-            var_dump($idAdherent);
             $ok = AdherentsEstInscrit::AjouterInscription($idAdherent, $idClub[0], date('Y-m-d'), $licence);
             $sucess = true ;
         }
@@ -110,7 +110,7 @@ if(!empty($_POST))
         $club=  explode("-", $_POST['selectedClub']);
         
         $adherents = Club::getAdherents( (int) $club[0]);
-        $adherents = Adherent::getNbGenre($adherents);
+        $adherents = Adherent::getGenres($adherents);
 
         //On construit le tableau avec les datas
         $data[]=[
