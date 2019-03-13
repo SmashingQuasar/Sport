@@ -1,6 +1,8 @@
 
+<div class="container">
 
-<div id="chart-container"></div>
+  <div id="chart-container"></div>
+</div>
 
 <script>
 
