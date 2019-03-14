@@ -65,21 +65,18 @@ if(!empty($_GET)){
                 $tranches = Adherent::getTranchesAges($ages);
                 break; 
             
-/*             case 'meteo' :
+            case 'meteo' :
                 $etape = 10;
-                var_dump(phpinfo());exit;
-                $meteo = new OpenWeather('570906fdd9e00f22e3a55df82c32a992');
+                $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
                 $error = null;
             
-                //On peut également lancer des execptions dans la vue, les execptions remonte
                 try{
-                    $forecast = $meteo->getForecast('Paris, fr');
-                    $today = $meteo->getToday('Paris,fr');
+                    //$forecast = $meteo->getForecast("Paris,fr");
+                    $today = $meteo->getToday("Paris,fr");
                 } catch(Exception $e){
                     $error = $e->getMessage();
                 }
 
-                var_dump($forecast); */
         }
 
     }

@@ -2,6 +2,9 @@
 
 namespace App;
 
+use DateTime;
+use Exception;
+
 class OpenWeather {
 
 
@@ -16,7 +19,7 @@ class OpenWeather {
     public function getToday(string $city) : ?array
     {
         try{
-            $data = $this->callAPI("/weather?q={$city}");
+            $data = $this->callAPI("weather?q={$city}");
         }
         catch(Exception $e){
 
@@ -37,7 +40,7 @@ class OpenWeather {
     {
 
         try{
-            $data = $this->callAPI("/forecast/daily?q={$city}");
+            $data = $this->callAPI("forecast/daily?q={$city}");
         }
         catch(Exception $e){
 
@@ -59,15 +62,13 @@ class OpenWeather {
     private function callAPI(string $endpoint) : ?array
     {
 
-        $curl = curl_init(" http://api.openweathermap.org/data/2.5/{$endpoint}&APPID={$this->apiKey}&units=metric&lang = fr");
+        $curl = curl_init("https://api.openweathermap.org/data/2.5/{$endpoint}&APPID={$this->apiKey}&units=metric&lang=fr");
         curl_setopt_array( $curl ,[
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CAINFO => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cert.cer',
-            CURLOPT_TIMEOUT => 1
-
+            CURLOPT_CAINFO => dirname(__DIR__) . DIRECTORY_SEPARATOR . "cert.cer"
         ]);
         $data = curl_exec($curl);
-        
+     
         //Si pas de réponse de l'API
         if ($data === false)
         {
@@ -83,6 +84,7 @@ class OpenWeather {
         }
 
         $data = json_decode($data , true);
+        var_dump($data);
         curl_close($curl);
 
         return $data;
