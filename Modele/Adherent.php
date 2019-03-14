@@ -247,34 +247,34 @@ class Adherent{
         foreach($ages as $age){
 
             if($age <= 10){
-                $tranche10 = $tranche10 + 1 ;
+                $tranche10++;
             }
             elseif($age >10 && $age <=20){
-                $tranche20 = $tranche20 + 1;
+                $tranche20++;
             }
             elseif($age > 20 && $age <= 30){
-                $tranche30 = $tranche30+ 1;
+                $tranche30++;
             }
             elseif($age > 30 && $age <= 40){
-                $tranche40 = $tranche40 + 1;
+                $tranche40++;;
             }
             elseif($age > 40 && $age <= 50){
-                $tranche50 = $tranche50 + 1;
+                $tranche50++;
             }
             elseif($age > 50 && $age <= 60){
-                $tranche60 = $tranche60 + 1;
+                $tranche60++;
             }
             elseif($age > 60 && $age <= 70){
-                $tranche70 = $tranche70 + 1;
+                $tranche70++;
             }
             elseif($age > 70 && $age <= 80){
-                $tranche80 = $tranche80 + 1;
+                $tranche80++;
             }
             elseif($age > 80 && $age <= 90){
-                $tranche90 = $tranche90 + 1;
+                $tranche90++;
             }
             elseif($age > 90 && $age <= 100){
-                $tranche100 = $tranche100 + 1;
+                $tranche100++;
             }
         }
 
