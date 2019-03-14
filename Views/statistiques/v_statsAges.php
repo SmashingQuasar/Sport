@@ -1,4 +1,4 @@
-
+<!----- Elie Bismuth !-->
 <div class="container">
   <h2>Statistiques des adhérents par tranches d'âges</h2>
   <div id="chart-container"></div>
