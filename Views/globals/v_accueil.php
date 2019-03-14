@@ -5,10 +5,10 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                  <a href="Index.php"><h3>Accueil</h3></a>
+                  <a href="Index.php"><h1>Accueil</h1></a>
             </div>
             <ul class="list-unstyled components">
-                <p>Dashborad</p>
+                <a href="Index.php?action=meteo"><h3>Météo</h3></a>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Adhérents</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -91,6 +91,9 @@
                             break;
                         case 9 : 
                             include($repVues."/statistiques/v_statsAges.php") ;  
+                            break;
+                        case 9 : 
+                            include($repVues."/meteo/v_openWeather.php") ;  
                             break;
 
                 }

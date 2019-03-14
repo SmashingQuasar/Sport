@@ -13,11 +13,10 @@
 
 var data = document.querySelector('#data').innerHTML;
 var values = JSON.parse(data);
-console.log(values.tranches20);
 
 const dataSource = {
   "chart": {
-    "caption": "Statistiques des adhérents par tranches d'ages",
+    "caption": "",
     "subcaption": "",
     "yaxisname": "Nombres d'adhérents",
     "decimals": "1",

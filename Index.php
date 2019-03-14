@@ -10,6 +10,7 @@ use App\Club;
 use App\Adherent;
 use App\AdherentsEstInscrit;
 use App\Cnx;
+use App\OpenWeather;
 
 $etape= 0;
 if(!empty($_GET)){
@@ -56,12 +57,29 @@ if(!empty($_GET)){
             case 'statAges':
                 $etape = 9 ;
                 $adherents = Adherent::getAllAdherents();
+                //On récupere l'âge de chaque adhérent
                 foreach($adherents as $adherent){
                     $ages[] = Adherent::getAge($adherent['date_naissance']);
                 }
-
+                //On récupére les tranches d'âges
                 $tranches = Adherent::getTranchesAges($ages);
+                break; 
+            
+/*             case 'meteo' :
+                $etape = 10;
+                var_dump(phpinfo());exit;
+                $meteo = new OpenWeather('570906fdd9e00f22e3a55df82c32a992');
+                $error = null;
+            
+                //On peut également lancer des execptions dans la vue, les execptions remonte
+                try{
+                    $forecast = $meteo->getForecast('Paris, fr');
+                    $today = $meteo->getToday('Paris,fr');
+                } catch(Exception $e){
+                    $error = $e->getMessage();
+                }
 
+                var_dump($forecast); */
         }
 
     }
