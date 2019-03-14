@@ -60,6 +60,8 @@ if(!empty($_GET)){
                     $ages[] = Adherent::getAge($adherent['date_naissance']);
                 }
 
+                $tranches = Adherent::getTranchesAges($ages);
+
         }
 
     }

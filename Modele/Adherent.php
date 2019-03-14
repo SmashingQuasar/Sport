@@ -152,6 +152,7 @@ class Adherent{
                     FROM adherents, clubs, adherents_est_inscrit
                     WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent
                     AND clubs.id_club = adherents_est_inscrit.id_club
+                    AND YEAR(date_inscription) = YEAR(CURDATE())
                     ORDER BY nom';
             
             $sth = $connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -177,13 +178,11 @@ class Adherent{
 
         if($connexion){
 
-            $sql = 'SELECT DISTINCT id_adherent, nom, prenom, date_naissance, genre                     
-                    FROM adherents
-                    WHERE adherents.id_adherent NOT IN (
-                        SELECT adherents.id_adherent
-                        FROM adherents, adherents_est_inscrit
-                        WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent)
-                    ORDER BY nom';
+            $sql = 'SELECT DISTINCT adherents.id_adherent, nom, prenom, date_naissance, genre         
+                    FROM adherents, clubs, adherents_est_inscrit 
+                    WHERE adherents.id_adherent = adherents_est_inscrit.id_adherent
+                    AND clubs.id_club = adherents_est_inscrit.id_club
+                    AND YEAR(date_inscription) < YEAR(CURDATE()) ';
             
             $sth = $connexion->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
             $sth->execute();
@@ -232,20 +231,67 @@ class Adherent{
         return $age;
     }
 
-    public static function getTranchesAges($ages)
+    public static function getTranchesAges($ages) :?array
     {
+        $tranche10 = 0;
+        $tranche20 = 0;
+        $tranche30 = 0;
+        $tranche40 = 0;
+        $tranche50 = 0;
+        $tranche60 = 0;
+        $tranche70 = 0;
+        $tranche80 = 0;
+        $tranche90 = 0;
+        $tranche100 = 0; 
+
         foreach($ages as $age){
-            $tranche[] = [
-                '10' => $age <10 ? $age : null,
-                '20' => $age <20 ? $age : null,
-                '30' => $age <30 ? $age : null,
-                '40' => $age <40 ? $age : null,
-                '50' => $age <50 ? $age : null,
-                '60' => $age <60 ? $age : null,
-                '70' => $age <70 ? $age : null,
-                '80' => $age <80 ? $age : null,
-            ];
+
+            if($age <= 10){
+                $tranche10 = $tranche10 + 1 ;
+            }
+            elseif($age >10 && $age <=20){
+                $tranche20 = $tranche20 + 1;
+            }
+            elseif($age > 20 && $age <= 30){
+                $tranche30 = $tranche30+ 1;
+            }
+            elseif($age > 30 && $age <= 40){
+                $tranche40 = $tranche40 + 1;
+            }
+            elseif($age > 40 && $age <= 50){
+                $tranche50 = $tranche50 + 1;
+            }
+            elseif($age > 50 && $age <= 60){
+                $tranche60 = $tranche60 + 1;
+            }
+            elseif($age > 60 && $age <= 70){
+                $tranche70 = $tranche70 + 1;
+            }
+            elseif($age > 70 && $age <= 80){
+                $tranche80 = $tranche80 + 1;
+            }
+            elseif($age > 80 && $age <= 90){
+                $tranche90 = $tranche90 + 1;
+            }
+            elseif($age > 90 && $age <= 100){
+                $tranche100 = $tranche100 + 1;
+            }
         }
+
+        $ages= [
+            'tranches10' => $tranche10,
+            'tranches20' => $tranche20,
+            'tranches30' => $tranche30,
+            'tranches40' => $tranche40,
+            'tranches50' => $tranche50,
+            'tranches60' => $tranche60,
+            'tranches70' => $tranche70,
+            'tranches80' => $tranche80,
+            'tranches90' => $tranche90,
+            'tranches100' => $tranche100,
+        ];
+
+        return  $ages;
     }
 
 

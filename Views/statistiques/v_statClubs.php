@@ -33,7 +33,6 @@
         var data = document.querySelector('#data').innerHTML;
         var values = JSON.parse(data);
 
-        console.log(values);
 
         const dataSource = {
             "chart": {
