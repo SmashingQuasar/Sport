@@ -16,6 +16,13 @@ class OpenWeather {
     }
 
 
+    /**
+     * Récupére la météo du jour
+     *
+     * @param  string $city
+     *
+     * @return array
+     */
     public function getToday(string $city) : ?array
     {
         try{
@@ -36,6 +43,13 @@ class OpenWeather {
     }
 
 
+    /**
+     * Récupére les prévisions météo de la semaine
+     *
+     * @param  string $city
+     *
+     * @return array
+     */
     public function getForecast(string $city) : ?array 
     {
 
@@ -59,6 +73,15 @@ class OpenWeather {
         return $result;
     }
 
+
+    /**
+     * Appel à l'API de OpenWeather
+     * $endpoint représente l'URL qui va etre amenée à être modifiée en fonction de la requéte
+     *
+     * @param  mixed $endpoint
+     *
+     * @return array
+     */
     private function callAPI(string $endpoint) : ?array
     {
 
