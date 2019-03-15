@@ -101,7 +101,7 @@ if(!empty($_POST))
      //On vient du formulaire d'ajout d'un adherent
     if($_GET['action'] === 'ajouterAdherent'){
         
-        $prenom = $_POST['prenom'];
+        $prenom = htmlentities($_POST['prenom']);
         $nom = $_POST['nom'];
         $date= $_POST['date'];
         $genre=$_POST['genre'];
