@@ -78,6 +78,8 @@ if(!empty($_GET)){
                     $error = $e->getMessage();
                 }
 
+                break;
+
         }
 
     }

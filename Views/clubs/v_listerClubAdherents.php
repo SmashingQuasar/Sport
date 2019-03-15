@@ -14,6 +14,7 @@
 
 <?php if(!empty($adherentsClub)) : ?>
 
+<div class="container">
     <table class="table mt-5" id="myTable" >
         <thead class="thead-dark">
         <tr>
@@ -34,5 +35,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
 
 <?php endif; ?>

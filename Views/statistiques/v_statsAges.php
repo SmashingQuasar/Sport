@@ -70,8 +70,8 @@ FusionCharts.ready(function() {
    var myChart = new FusionCharts({
       type: "column3d",
       renderAt: "chart-container",
-      width: "70%",
-      height: "70%",
+      width: "80%",
+      height: "80%",
       dataFormat: "json",
       dataSource
    }).render();
