@@ -17,6 +17,7 @@ if(!empty($_GET)){
 
     $action = $_GET['action'];
 
+    //Routage de l'application
     if(!empty($action))
     {
         //Les variables $etape sont utilisées dans la vue v_accueil afin de déterminer la vue a appeler

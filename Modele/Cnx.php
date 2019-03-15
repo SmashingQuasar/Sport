@@ -12,12 +12,17 @@ class Cnx {
     
     private static $dsn = 'mysql:dbname=sport;host=127.0.0.1';
     private static $user = 'root';
-    private static $passwd = '';
+    private static $passwd = 'root';
     private static $options = [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''];
  
     private function __construct() {  
     }
   
+    /**
+     * Recupére l'instance de PDO
+     *
+     * @return void
+     */
     public static function getInstance() {
   
       if(is_null(self::$_instance)) {
@@ -27,7 +32,12 @@ class Cnx {
       return self::$_instance;
     }
 
-      public static function getLastInsertId(){
+    /**
+     * Récupére le dernier id inseré en base de données
+     *
+     * @return void
+     */
+    public static function getLastInsertId(){
 
         $id = self::$_instance->lastInsertId();
         return $id;
