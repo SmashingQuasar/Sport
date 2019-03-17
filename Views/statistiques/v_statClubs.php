@@ -2,7 +2,7 @@
 <!----- Elie Bismuth !-->
 <div class="container mt-5">
     <h2>Sélectionnez un club pour voir ses statistiques</h2>
-    <form class="mt-3" action="Index.php?action=statClub" method="post">
+    <form class="mt-3" action="Index.php?action=statClubs" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
                 <option> <?=  $club['id_club'] . " - " .$club['nom_club'] ?> </option>       

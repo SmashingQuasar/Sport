@@ -21,6 +21,19 @@ class ApiGeo{
 
     }
 
+    public static function getCommunes($departement)
+    {
+        try{
+            $data = self::callAPI("/departements/{$departement}/communes");
+        }
+        catch(Exception $e){
+
+            die($e->getMessage());
+        }
+
+        return $data;
+    }
+
 
     /**
      * Appel à l'API de Api Geo

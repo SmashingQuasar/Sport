@@ -1,13 +1,35 @@
 <!--- Elie Bismuth -->
 
-<?php if($error) : ?>
-    <div class="alert alert-danger">
-        <?= $error ?>
+<div class="container mt-5">
+    <h2>Sélectionnez un département</h2>
+    <form class="mt-3" action="Index.php?action=meteo" method="post">
+        <select name="selectedDepartement" class="browser-default custom-select">
+            <?php foreach($departements as $departement) : ?>
+                <option value="<?= $departement['code'] ?>"> <?= $departement['nom']?> - <?= $departement['code'] ?>  </option>       
+            <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+
+<?php if(!empty($communes)) : ?>
+    <div class="container mt-5">
+        <h2>Sélectionnez une commune</h2>
+        <form class="mt-3" action="Index.php?action=meteo" method="post">
+            <select name="selectedCommune" class="browser-default custom-select">
+                <?php foreach($communes as $commune) : ?>
+                    <option value="<?= $commune['nom'] ?>"> <?= $commune['nom']?> - <?= $commune['code'] ?>  </option>       
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
     </div>
-<?php else : ?>
+<?php endif; ?>
+
+<?php if(!empty($forecast) && !empty($today)) :  ?>
     <div class="container ">
         <div class="alert alert-info" role="alert" align="center">
-           <h3>Météo sur Paris</h3>
+           <h3>Météo pour <?= $commune ?></h3>
         </div>
         <div class="row">
             <div class="col-sm-4">
