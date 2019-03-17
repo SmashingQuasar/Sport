@@ -1,16 +1,18 @@
 <!--- Elie Bismuth -->
 
-<div class="container mt-5">
-    <h2>Sélectionnez un département</h2>
-    <form class="mt-3" action="Index.php?action=meteo" method="post">
-        <select name="selectedDepartement" class="browser-default custom-select">
-            <?php foreach($departements as $departement) : ?>
-                <option value="<?= $departement['code'] ?>"> <?= $departement['nom']?> - <?= $departement['code'] ?>  </option>       
-            <?php endforeach; ?>
-        </select>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </form>
-</div>
+<?php if(!empty($departements)) : ?>
+    <div class="container mt-5">
+        <h2>Sélectionnez un département</h2>
+        <form class="mt-3" action="Index.php?action=meteo" method="post">
+            <select name="selectedDepartement" class="browser-default custom-select">
+                <?php foreach($departements as $departement) : ?>
+                    <option value="<?= $departement['code'] ?>"> <?= $departement['nom']?> - <?= $departement['code'] ?>  </option>       
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+    </div>
+<?php endif; ?>
 
 <?php if(!empty($communes)) : ?>
     <div class="container mt-5">

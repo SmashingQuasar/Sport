@@ -102,11 +102,11 @@ switch($action)
     
     case 'meteo' :
         $etape = 8;
-        $error = null;
         
-        //Instancation de OpenWeather avec l'ApiKey donné par l'Api lors de la création d'un compte
-        $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
-        $departements = ApiGeo::getDepartements();
+        if(empty($_POST))
+        {
+            $departements = ApiGeo::getDepartements();
+        }
         if(!empty($_POST['selectedDepartement']))
         {
             $departement = $_POST['selectedDepartement'];
@@ -114,14 +114,11 @@ switch($action)
         }
         if(!empty($_POST['selectedCommune']))
         {
+            $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
             $commune = $_POST['selectedCommune'];
-            try{
-                $forecast = $meteo->getForecast($commune);
-                $today = $meteo->getToday($commune);
-            } catch(Exception $e){
-                $error = $e->getMessage();
-            }
-            
+            $forecast = $meteo->getForecast($commune);
+            $today = $meteo->getToday($commune);
+
         }
         break;
 }
