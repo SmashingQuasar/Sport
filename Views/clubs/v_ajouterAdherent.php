@@ -9,7 +9,7 @@
         </div>
     <?php endif; ?>
 
-    <form name="formAjout" action="Index.php?action=ajouterAdherent" method="post">
+    <form name="formAjout" action="clubController.php?action=ajouterAdherent" method="post">
         <legend>Ajouter un adhérent </legend>
         <div class="form-group mt-3">
             <label for="nom">Club</label>

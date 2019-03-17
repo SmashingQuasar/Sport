@@ -8,17 +8,17 @@
                   <a href="Index.php"><h1>Accueil</h1></a>
             </div>
             <div class="sidebar-header">
-                  <a href="Index.php?action=meteo"><h2>Météo</h2></a>
+                  <a href="meteoController.php?action=meteo"><h2>Météo</h2></a>
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Adhérents</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="Index.php?action=listerAdherentsAJour">Adhérents à jour</a>
+                            <a href="adherentController.php?action=listerAdherentsAJour">Adhérents à jour</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=listerAdherentsNonAJour">Adhérents non à jour</a>
+                            <a href="adherentController.php?action=listerAdherentsNonAJour">Adhérents non à jour</a>
                         </li>
                     </ul>
                 </li>
@@ -26,10 +26,10 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clubs</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="Index.php?action=listerClubAdherents">Voir les adhérents</a>
+                            <a href="clubController.php?action=listerClubAdherents">Voir les adhérents</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=ajouterAdherent">Ajouter un adhérent</a>
+                            <a href="clubController.php?action=ajouterAdherent">Ajouter un adhérent</a>
                         </li>
                     </ul>
                 </li>
@@ -37,13 +37,13 @@
                     <a href="#statSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Statistiques</a>
                     <ul class="collapse list-unstyled" id="statSubmenu">
                         <li>
-                            <a href="Index.php?action=statGlobal">Statistiques globales</a>
+                            <a href="statsController.php?action=statGlobal">Statistiques globales</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=statClubs">Statistique par clubs</a>
+                            <a href="statsController.php?action=statClubs">Statistique par clubs</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=statAges">Statistique par ages</a>
+                            <a href="statsController.php?action=statAges">Statistique par ages</a>
                         </li>
                     </ul>
                 </li>
