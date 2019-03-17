@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <h2>Sélectionnez un club pour voir ses adhérents</h2>
-    <form class="mt-3" action="clubController.php?action=listerClub" method="post">
+    <form class="mt-3" action="Index.php?action=listerClub" method="post">
         <select name="selectedClub" class="browser-default custom-select">
             <?php foreach($clubs as $club) : ?>
                 <option value="<?=  $club['id_club'] ?>"><?= $club['nom_club'] ?> </option>       
