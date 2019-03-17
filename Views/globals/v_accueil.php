@@ -45,9 +45,6 @@
                         <li>
                             <a href="Index.php?action=statAges">Statistique par ages</a>
                         </li>
-                        <li>
-                            <a href="Index.php?action=apiGeo">Api Geo</a>
-                        </li>
                     </ul>
                 </li>
             </ul>

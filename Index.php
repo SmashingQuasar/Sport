@@ -81,9 +81,9 @@ if(!empty($_GET)){
                 }
                 break;
 
-            case 'apiGeo' : 
+/*             case 'apiGeo' : 
                 $etape = 11;
-                $data = ApiGeo::getDepartements();
+                $data = ApiGeo::getDepartements(); */
 
         }
 
