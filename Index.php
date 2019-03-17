@@ -73,11 +73,11 @@ if(!empty($_GET)){
             
                 try{
                     $forecast = $meteo->getForecast("Paris,fr");
-                    //$today = $meteo->getToday("Paris,fr");
+                    $today = $meteo->getToday("Paris,fr");
                 } catch(Exception $e){
                     $error = $e->getMessage();
                 }
-                var_dump($forecast);
+                //var_dump($forecast);
                 break;
 
         }

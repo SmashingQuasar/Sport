@@ -55,7 +55,7 @@ class OpenWeather {
     {
 
         try{
-            $data = $this->callAPI("forecast/daily?q={$city}");
+            $data = $this->callAPI("forecast?q={$city}");
         }
         catch(Exception $e){
 
@@ -64,10 +64,9 @@ class OpenWeather {
         
         foreach($data['list'] as $day){
             $result [] = [
-                'temp' => $day['temp']['day'],
+                'temp' => $day['main']['temp'],
                 'description' => $day['weather'][0]['description'],
                 'date' => new DateTime('@' . $day['dt'])
-                //@ pour construire une date a partir d'un timestamp
             ];
         }
 
