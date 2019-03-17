@@ -94,8 +94,8 @@
                         case 9 : 
                             include($repVues."/statistiques/v_statsAges.php") ;  
                             break;
-                        case 9 : 
-                            include($repVues."/meteo/v_openWeather.php") ;  
+                        case 10: 
+                            include($repVues."/meteo/v_meteoToday.php") ;  
                             break;
 
                 }

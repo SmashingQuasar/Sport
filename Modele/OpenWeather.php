@@ -108,12 +108,10 @@ class OpenWeather {
         }
 
         $data = json_decode($data , true);
-        var_dump($data);
         curl_close($curl);
-
         return $data;
 
     }
 
 
-    }
+}

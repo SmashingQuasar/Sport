@@ -72,12 +72,12 @@ if(!empty($_GET)){
                 $error = null;
             
                 try{
-                    //$forecast = $meteo->getForecast("Paris,fr");
-                    $today = $meteo->getToday("Paris,fr");
+                    $forecast = $meteo->getForecast("Paris,fr");
+                    //$today = $meteo->getToday("Paris,fr");
                 } catch(Exception $e){
                     $error = $e->getMessage();
                 }
-
+                var_dump($forecast);
                 break;
 
         }
@@ -102,11 +102,11 @@ if(!empty($_POST))
     if($_GET['action'] === 'ajouterAdherent'){
         
         $prenom = htmlentities($_POST['prenom']);
-        $nom = $_POST['nom'];
-        $date= $_POST['date'];
-        $genre=$_POST['genre'];
+        $nom = htmlentities($_POST['nom']);
+        $date= htmlentities($_POST['date']);
+        $genre=htmlentities($_POST['genre']);
         $idClub=  explode("-", $_POST['club']);
-        $licence= $_POST['licence'];
+        $licence= htmlentities($_POST['licence']);
         
         //On ajoute l'adhérent dans la bdd
         $ok = Club::AjouterAdherent($prenom, $nom, $date, $genre);
