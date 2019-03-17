@@ -11,6 +11,7 @@ use App\Adherent;
 use App\AdherentsEstInscrit;
 use App\Cnx;
 use App\OpenWeather;
+use App\ApiGeo;
 
 $etape= 0;
 if(!empty($_GET)){
@@ -68,6 +69,7 @@ if(!empty($_GET)){
             
             case 'meteo' :
                 $etape = 10;
+                //Instancation de OpenWeather avec l'ApiKey donné par l'Api lors de la création d'un compte
                 $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
                 $error = null;
             
@@ -77,8 +79,11 @@ if(!empty($_GET)){
                 } catch(Exception $e){
                     $error = $e->getMessage();
                 }
-                //var_dump($forecast);
                 break;
+
+            case 'apiGeo' : 
+                $etape = 11;
+                $data = ApiGeo::getDepartements();
 
         }
 

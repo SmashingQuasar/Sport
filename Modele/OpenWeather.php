@@ -88,7 +88,7 @@ class OpenWeather {
         $curl = curl_init("https://api.openweathermap.org/data/2.5/{$endpoint}&APPID={$this->apiKey}&units=metric&lang=fr");
         curl_setopt_array( $curl ,[
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CAINFO => dirname(__DIR__) . DIRECTORY_SEPARATOR . "cert.cer"
+            CURLOPT_CAINFO => dirname(__DIR__) . DIRECTORY_SEPARATOR . "certOpenWeather.crt"
         ]);
         $data = curl_exec($curl);
      

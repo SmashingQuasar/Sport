@@ -45,6 +45,9 @@
                         <li>
                             <a href="Index.php?action=statAges">Statistique par ages</a>
                         </li>
+                        <li>
+                            <a href="Index.php?action=apiGeo">Api Geo</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -96,6 +99,9 @@
                             break;
                         case 10: 
                             include($repVues."/meteo/v_meteo.php") ;  
+                            break;
+                        case 11: 
+                            include($repVues."/apiGeo/v_apiGeo.php") ;  
                             break;
 
                 }
