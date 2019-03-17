@@ -6,6 +6,9 @@
     </div>
 <?php else : ?>
     <div class="container ">
+        <div class="alert alert-info" role="alert" align="center">
+           <h3>Météo sur Paris</h3>
+        </div>
         <div class="row">
             <div class="col-sm-4">
                 <?php if(!empty($today)) : ?>
@@ -26,7 +29,7 @@
                 <?php if(!empty($forecast)) : ?>
                     <?php foreach($forecast as $day) : ?>
                         <li>
-                            <?= $day['date']->format('d/m/y')?> <?= $day['description'] ?> <?= $day['temp'] ?> C
+                            <strong><?= $day['date']->format('d/m/y h:i:s')?> </strong> :  <?= $day['description'] ?> , <?= $day['temp'] ?> C
                         </li>
                     <?php endforeach; ?>
                 <?php endif; ?>
