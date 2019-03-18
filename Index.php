@@ -109,15 +109,18 @@ switch($action)
         
         if(empty($_POST))
         {
+            //Connexion Api avec ApiGeo pour récupérer tous les départements 
             $departements = ApiGeo::getDepartements();
         }
         if(!empty($_POST['selectedDepartement']))
         {
             $departement = $_POST['selectedDepartement'];
+            //Api Geo pour récupérer les communes d'un département
             $communes = ApiGeo::getCommunes($departement);
         }
         if(!empty($_POST['selectedCommune']))
         {
+            //Connexion Api OpenWeather pour récupérer la météo de la commune selectionné par l'utilisateur
             $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
             $commune = $_POST['selectedCommune'];
             try{
