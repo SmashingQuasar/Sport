@@ -14,13 +14,13 @@
 
 
 <?php if(!empty($data)) : ?>
-  
-    <!-- On crée la div qui va contenir les camemberts-->
+
     <div class="container mt-5">
         <div class="alert alert-info" role="alert" align="center">
             <span id='nbHommes'><?= $data[0]['hommes'] ?></span>  hommes <br>
             <span id='nbFemmes'><?= $data[0]['femmes'] ?> </span> femmes 
         </div>
+         <!-- On crée la div qui va contenir les camemberts-->
         <div align="center" id="chart-container"></div>
     </div>
 
@@ -30,9 +30,9 @@
     
     <script>
 
+        //On récupére le tableau json, et on le parse
         var data = document.querySelector('#data').innerHTML;
         var values = JSON.parse(data);
-
 
         const dataSource = {
             "chart": {

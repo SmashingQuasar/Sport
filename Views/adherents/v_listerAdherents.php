@@ -3,7 +3,6 @@
 <div class="container mt-5">
     <input type="text" id="myInput" onkeyup="searchName()" placeholder="Search for names.."
         title="Type in a name" style="width: 100%;font-size: 16px;padding: 12px 20px 12px 40px;border: 1px solid #ddd; margin-bottom: 12px;">
-    
     <table class="table" id="myTable" >
         <thead class="thead-dark">
         <tr>
@@ -15,10 +14,8 @@
             <th scope="col">Date Inscription</th>
         </tr>
         </thead>
-
         <tbody>
             <?php foreach($tabAdherents as $adherent) : ?>
-
                 <tr>
                     <td><?= ucfirst($adherent['nom']) ?></td>
                     <td><?= ucfirst($adherent['prenom']) ?></td>
@@ -27,13 +24,10 @@
                     <td><?= $adherent['nom_club'] ?></td>
                     <td><?= $adherent['date_inscription'] ?></td>
                 </tr>
-  
             <?php endforeach; ?>
         </tbody>
     </table>
-    
 </div>
-
 <script>
         function searchName() {
             var input, filter, table, tr, td, i, txtValue;
@@ -53,7 +47,6 @@
                 }
             }
         }
-
 </script>
 
 

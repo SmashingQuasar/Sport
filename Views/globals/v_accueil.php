@@ -90,9 +90,6 @@
                         case 8: 
                             include($repVues."/meteo/v_meteo.php") ;  
                             break;
-                        case 9: 
-                            include($repVues."/apiGeo/v_apiGeo.php") ;  
-                            break;
 
                 }
             }

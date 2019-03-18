@@ -8,7 +8,7 @@
             L'inscription de l'adhérent a bien été enregistré
         </div>
     <?php endif; ?>
-
+    
     <form name="formAjout" action="Index.php?action=ajouterAdherent" method="post">
         <legend>Ajouter un adhérent </legend>
         <div class="form-group mt-3">
