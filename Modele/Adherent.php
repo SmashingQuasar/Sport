@@ -195,6 +195,13 @@ class Adherent{
         return $adherents;
     }
 
+    /**
+     * Récupére le genre de chaqur adhérent dans un tableau d'adhérents
+     *
+     * @param  array $adherents
+     *
+     * @return array
+     */
     public static function getGenres(array $adherents) : ?array
     {
         $nbHommes = 0;
@@ -211,7 +218,7 @@ class Adherent{
             }
         
         }
-        //On construit le tableau avec les datas
+
         $data=[
             'hommes' => $nbHommes,
             'femmes' => $nbFemmes
@@ -220,6 +227,13 @@ class Adherent{
         return $data;
     }
 
+    /**
+     * Calcul un âge à partir d'une date de naissance
+     *
+     * @param  mixed $dateNaissance
+     *
+     * @return void
+     */
     public static function getAge($dateNaissance)
     {
         $today = new \Datetime(date('m.d.y'));
@@ -231,7 +245,15 @@ class Adherent{
         return $age;
     }
 
-    public static function getTranchesAges($ages) :?array
+
+    /**
+     * Découpe un tableau d'âges en tranches d'âges
+     *
+     * @param array $ages
+     *
+     * @return array
+     */
+    public static function getTranchesAges( array $ages) :?array
     {
         $tranche10 = 0;
         $tranche20 = 0;

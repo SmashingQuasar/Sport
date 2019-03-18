@@ -4,6 +4,7 @@
 require  __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 $repVues = __DIR__ . DIRECTORY_SEPARATOR .'Views/';
 
+//Chargement des classes par Autoload 
 use App\Club;
 use App\Adherent;
 use App\AdherentsEstInscrit;
@@ -75,8 +76,10 @@ switch($action)
         $etape = 6 ; 
         $clubs = Club::getClubs();
         if(!empty($_POST)){
-            //explode afin de récupérer l'id du club 
+
             $club=  explode("-", $_POST['selectedClub']);
+            //$club[0] = id du club
+            //$club[1] = nom du club
             
             $adherents = Club::getAdherents( (int) $club[0]);
             $adherents = Adherent::getGenres($adherents);
