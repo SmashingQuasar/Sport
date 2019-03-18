@@ -100,10 +100,10 @@ class OpenWeather {
             throw new Exception($error);
         }
 
-        //Si erreur body de la reponse(bad url)
-        if (curl_getinfo($curl, CURLINFO_HTTP_CODE) !== 200)
+        //Si erreur body de la reponse
+        if (curl_getinfo($curl, CURLINFO_HTTP_CODE) === 404)
         {
-            throw new Exception($data);
+            throw new Exception("La météo est indisponible pour cette ville" , 404);
         }
 
         $data = json_decode($data , true);

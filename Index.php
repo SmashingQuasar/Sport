@@ -105,6 +105,7 @@ switch($action)
     
     case 'meteo' :
         $etape = 8;
+        $error = null;
         
         if(empty($_POST))
         {
@@ -119,8 +120,12 @@ switch($action)
         {
             $meteo = new OpenWeather("570906fdd9e00f22e3a55df82c32a992");
             $commune = $_POST['selectedCommune'];
-            $forecast = $meteo->getForecast($commune);
-            $today = $meteo->getToday($commune);
+            try{
+                $forecast = $meteo->getForecast($commune);
+                $today = $meteo->getToday($commune);
+            } catch(Exception $e){
+                $error = $e->getMessage();
+            }
 
         }
         break;
