@@ -5,20 +5,20 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                  <a href="Index.php"><h1>Accueil</h1></a>
+                  <a href="/"><h1>Accueil</h1></a>
             </div>
             <div class="sidebar-header">
-                  <a href="Index.php?action=meteo"><h2>Météo</h2></a>
+                  <a href="/?action=meteo"><h2>Météo</h2></a>
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Adhérents</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="Index.php?action=listerAdherentsAJour">Adhérents à jour</a>
+                            <a href="/?action=listerAdherentsAJour">Adhérents à jour</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=listerAdherentsNonAJour">Adhérents non à jour</a>
+                            <a href="/?action=listerAdherentsNonAJour">Adhérents non à jour</a>
                         </li>
                     </ul>
                 </li>
@@ -26,10 +26,10 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clubs</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="Index.php?action=listerClubAdherents">Voir les adhérents</a>
+                            <a href="/?action=listerClubAdherents">Voir les adhérents</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=ajouterAdherent">Ajouter un adhérent</a>
+                            <a href="/?action=ajouterAdherent">Ajouter un adhérent</a>
                         </li>
                     </ul>
                 </li>
@@ -37,13 +37,13 @@
                     <a href="#statSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Statistiques</a>
                     <ul class="collapse list-unstyled" id="statSubmenu">
                         <li>
-                            <a href="Index.php?action=statGlobal">Statistiques globales</a>
+                            <a href="/?action=statGlobal">Statistiques globales</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=statClubs">Statistique par clubs</a>
+                            <a href="/?action=statClubs">Statistique par clubs</a>
                         </li>
                         <li>
-                            <a href="Index.php?action=statAges">Statistique par ages</a>
+                            <a href="/?action=statAges">Statistique par ages</a>
                         </li>
                     </ul>
                 </li>
@@ -65,7 +65,7 @@
             {
                 switch($etape)
                 {
-                        //Le contenu de $etape est défini dans le fichier Index.php
+                        //Le contenu de $etape est défini dans le fichier /
                         case 1 :
                             include($repVues."/adherents/v_listerAdherents.php") ;
                             break;         

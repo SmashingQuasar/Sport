@@ -1,8 +1,8 @@
 <?php
 //Elie Bismuth
 
-require  __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
-$repVues = __DIR__ . DIRECTORY_SEPARATOR .'Views/';
+require  __DIR__  . '/../vendor/autoload.php';
+$repVues = __DIR__ .'/../Views/';
 
 //Chargement des classes par Autoload 
 use App\Club;

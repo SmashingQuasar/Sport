@@ -10,8 +10,8 @@ class Cnx {
     
     private static $_instance = null;
     
-    private static $dsn = 'mysql:dbname=sport;host=127.0.0.1';
-    private static $user = 'root';
+    private static $dsn = 'mysql:dbname=dev_elie_sport;host=localhost';
+    private static $user = 'dev-elie-sport';
     private static $passwd = '';
     private static $options = [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''];
  
