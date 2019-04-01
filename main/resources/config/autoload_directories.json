@@ -3,6 +3,7 @@
         "../main/controller/",
         "../main/model/",
         "../main/service/",
-        "../main/system/"
+        "../main/system/",
+        "../main/tool/"
     ]
 }
